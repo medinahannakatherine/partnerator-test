@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Tymon\JWTAuth\Http\Middleware\Authenticate;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\OmsController;
+use App\Http\Controllers\PostmanDataController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,6 +22,8 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::middleware('jwt.verify')->group(function() {
     Route::post('/emrates',[OmsController::class,'getRates']);
+    Route::post('/emdates',[OmsController::class,'getDates']);
+    Route::post('/check-estimates',[OmsController::class,'getRatesDates']);
 });
 
 
